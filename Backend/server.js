@@ -3,7 +3,7 @@ const path = require("path");
 const Database = require("better-sqlite3");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Connect to the SQLite database
 const db = new Database(path.join(__dirname, "expenses.db"));
@@ -133,6 +133,6 @@ app.put("/api/expenses/:id", (req, res) => {
     res.json(updatedExpense);
 });
 // Start the server
-app.listen(PORT, () => {
-    console.log(`Student Expense Tracker running at http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Student Expense Tracker running on port ${PORT}`);
 });
