@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Student Expense Tracker</h1>
+        <p>Manage your money. Track your spending. Save smarter.</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>Total Spending</h2>
+            <h3>₹<span id="total">0.00</span></h3>
+        </section>
+
+        <section class="card">
+            <h2>Monthly Spending Summary</h2>
+            <label for="monthFilter">Choose month:</label>
+            <input type="month" id="monthFilter">
+            <h3>₹<span id="monthlyTotal">0.00</span></h3>
+        </section>
+
+        <section class="card">
+            <h2>Category-wise Spending</h2>
+            <div id="categorySummary">
+                <p>Add expenses to see your category summary.</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Add Expense</h2>
+
+            <form id="expenseForm">
+                <input type="hidden" id="expenseId">
+
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="Expense name"
+                    required
+                >
+
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="Amount in rupees"
+                    min="0.01"
+                    step="0.01"
+                    required
+                >
+
+                <select id="category" required>
+                    <option value="">Select category</option>
+                    <option value="Food">Food</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Books">Books</option>
+                    <option value="Education">Education</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <input type="date" id="date" required>
+
+                <button type="submit" id="submitButton">Add Expense</button>
+                <button type="button" id="cancelEdit" hidden>Cancel Edit</button>
+            </form>
+
+            <p id="message" role="status"></p>
+        </section>
+
+        <section class="card">
+            <h2>Expense History</h2>
+
+            <div class="filters">
+                <input
+                    type="search"
+                    id="searchExpense"
+                    placeholder="Search by expense name..."
+                >
+
+                <select id="filterCategory">
+                    <option value="">All categories</option>
+                    <option value="Food">Food</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Books">Books</option>
+                    <option value="Education">Education</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <input type="date" id="filterDate" aria-label="Filter by date">
+                <button type="button" id="clearFilters">Clear Filters</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="expenseList"></tbody>
+            </table>
+
+            <p id="emptyMessage" hidden>No matching expenses found.</p>
+        </section>
+    </main>
+
+    <footer>Student Expense Tracker Project</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

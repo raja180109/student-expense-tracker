@@ -1,0 +1,6 @@
+node_modules/
+Backend/expenses.db
+Backend/expenses.db-shm
+Backend/expenses.db-wal
+.env
+npm-debug.log*
