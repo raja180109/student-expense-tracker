@@ -1,22 +1,24 @@
 # Student Expense Tracker
 
-## About the Project
-Student Expense Tracker is a web application designed to help students manage and track their daily expenses. It allows students to record their spending, organize expenses by category, and view monthly summaries.
+## Project Description
+Student Expense Tracker is a full-stack web application designed to help college students manage their daily expenses and understand their spending habits.
 
 ## Features
-- Add new expenses
-- Edit existing expenses
-- Delete expenses
-- View monthly expense summaries
-- View expense totals by category
-- Search and filter expenses
-- Store expenses using an SQLite database
+- Add new expenses.
+- View expense history.
+- Edit existing expenses.
+- Delete expenses.
+- Search expenses.
+- Filter expenses by category and date.
+- View expense summaries and reports.
+- Store expense records in an SQLite database.
 
 ## Technologies Used
 - **Frontend:** HTML, CSS, JavaScript
-- **Backend:** Node.js and Express.js
+- **Backend:** Node.js, Express.js
 - **Database:** SQLite
 - **Version Control:** Git and GitHub
+- **Deployment:** Render
 
 ## Project Structure
 ```text
@@ -27,41 +29,38 @@ studentExpenseTracker/
 │   ├── index.html
 │   ├── style.css
 │   └── script.js
+├── .gitignore
 ├── package.json
 ├── package-lock.json
-├── .gitignore
 └── README.md
 ```
 
-## How to Run the Project
+## How to Run the Project Locally
 
-### 1. Install Node.js
-Install Node.js if it is not already installed.
+1. Install Node.js on your computer.
+2. Open the project folder in VS Code.
+3. Open the terminal in the project folder.
+4. Install the dependencies:
 
-### 2. Open the Project
-Open the project folder in VS Code.
+   ```bash
+   npm install
+   ```
 
-### 3. Install Dependencies
-Open the terminal in the project folder and run:
+5. Start the server:
 
-```bash
-npm install
-```
+   ```bash
+   node Backend/server.js
+   ```
 
-### 4. Start the Server
-Run:
+6. Open your browser and visit:
 
-```bash
-node Backend/server.js
-```
+   `http://localhost:3000`
 
-### 5. Open the Application
-Open your browser and visit:
+## Live Demo
+https://student-expense-tracker-woe3.onrender.com/
 
-http://localhost:3000
+## GitHub Repository
+https://github.com/raja180109/student-expense-tracker
 
-## Purpose
-The purpose of this project is to help students understand their spending habits and manage their expenses more effectively.
-
-## Author
-Raja sree
+## Developed By
+Raja Sree
