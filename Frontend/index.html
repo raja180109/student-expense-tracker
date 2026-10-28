@@ -3,117 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Expense Tracker</title>
+    <title>SpendSmart | Student Expense Tracker</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Student Expense Tracker</h1>
-        <p>Manage your money. Track your spending. Save smarter.</p>
-    </header>
-
-    <main>
-        <section class="card">
-            <h2>Total Spending</h2>
-            <h3>₹<span id="total">0.00</span></h3>
-        </section>
-
-        <section class="card">
-            <h2>Monthly Spending Summary</h2>
-            <label for="monthFilter">Choose month:</label>
-            <input type="month" id="monthFilter">
-            <h3>₹<span id="monthlyTotal">0.00</span></h3>
-        </section>
-
-        <section class="card">
-            <h2>Category-wise Spending</h2>
-            <div id="categorySummary">
-                <p>Add expenses to see your category summary.</p>
-            </div>
-        </section>
-
-        <section class="card">
-            <h2>Add Expense</h2>
-
-            <form id="expenseForm">
-                <input type="hidden" id="expenseId">
-
-                <input
-                    type="text"
-                    id="title"
-                    placeholder="Expense name"
-                    required
-                >
-
-                <input
-                    type="number"
-                    id="amount"
-                    placeholder="Amount in rupees"
-                    min="0.01"
-                    step="0.01"
-                    required
-                >
-
-                <select id="category" required>
-                    <option value="">Select category</option>
-                    <option value="Food">Food</option>
-                    <option value="Travel">Travel</option>
-                    <option value="Books">Books</option>
-                    <option value="Education">Education</option>
-                    <option value="Other">Other</option>
-                </select>
-
-                <input type="date" id="date" required>
-
-                <button type="submit" id="submitButton">Add Expense</button>
-                <button type="button" id="cancelEdit" hidden>Cancel Edit</button>
-            </form>
-
-            <p id="message" role="status"></p>
-        </section>
-
-        <section class="card">
-            <h2>Expense History</h2>
-
-            <div class="filters">
-                <input
-                    type="search"
-                    id="searchExpense"
-                    placeholder="Search by expense name..."
-                >
-
-                <select id="filterCategory">
-                    <option value="">All categories</option>
-                    <option value="Food">Food</option>
-                    <option value="Travel">Travel</option>
-                    <option value="Books">Books</option>
-                    <option value="Education">Education</option>
-                    <option value="Other">Other</option>
-                </select>
-
-                <input type="date" id="filterDate" aria-label="Filter by date">
-                <button type="button" id="clearFilters">Clear Filters</button>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">₹</div>
+                <div>
+                    <h2>SpendSmart</h2>
+                    <p>Student Finance</p>
+                </div>
             </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Amount</th>
-                        <th>Category</th>
-                        <th>Date</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="expenseList"></tbody>
-            </table>
+            <p class="sidebar-heading">WORKSPACE</p>
 
-            <p id="emptyMessage" hidden>No matching expenses found.</p>
-        </section>
-    </main>
+            <nav class="slide-navigation">
+                <button type="button" class="nav-item active" data-slide="1">
+                    <span>⌂</span> Welcome
+                </button>
+                <button type="button" class="nav-item" data-slide="2">
+                    <span>▦</span> Dashboard
+                </button>
+                <button type="button" class="nav-item" data-slide="3">
+                    <span>＋</span> Add Expense
+                </button>
+                <button type="button" class="nav-item" data-slide="4">
+                    <span>☷</span> Expense History
+                </button>
+                <button type="button" class="nav-item" data-slide="5">
+                    <span>◷</span> Reports
+                </button>
+            </nav>
 
-    <footer>Student Expense Tracker Project</footer>
+            <div class="sidebar-tip">
+                <span>💡</span>
+                <p>Small savings today can make a big difference tomorrow.</p>
+            </div>
+        </aside>
 
-    <script src="script.js"></script>
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">YOUR PERSONAL FINANCE SPACE</p>
+                    <h1 id="pageTitle">Welcome to SpendSmart</h1>
+                </div>
+                <div class="profile">
+                    <span class="profile-avatar">S</span>
+                    <div>
+                        <strong>Student</strong>
+                        <p>Personal Account</p>
+                    </div>
+                </div>
+            </header>
+
+            <section class="slide welcome-slide" id="slide1">
+                <div class="welcome-content">
+                    <p class="eyebrow">✦ YOUR MONEY, YOUR CONTROL</p>
+                    <h2>Make every rupee <span>count.</span></h2>
+                    <p class="welcome-description">
+                        Track your expenses, understand your spending habits,
+                        and take control of your student budget—all in one place.
+                    </p>
+                    <button type="button" class="primary-button" data-go-to="2">
+                        Explore Dashboard →
+                    </button>
+                    <button type="button" class="secondary-button" data-go-to="3">
+                        Get Started
+                    </button>
+                </div>
+
+                <div class="welcome-art">
+                    <div class="art-circle">₹</div>
+                    <div class="art-card">
+                        <span>Smart spending</span>
+                        <strong>Better habits ✦</strong>
+                    </div>
+                </div>
+
+                <div class="toolkit">
+                    <h2>Your financial toolkit</h2>
+                    <div class="toolkit-grid">
+                        <article class="toolkit-card">
+                            <span>▦</span>
+                            <h3>Track Spending</h3>
+                            <p>See your expenses and understand where your money goes.</p>
+                        </article>
+                        <article class="toolkit-card">
+                            <span>＋</span>
+                            <h3>Record Expenses</h3>
+                            <p>Save daily spending with an amount, category, and date.</p>
+                        </article>
+                        <article class="toolkit-card">
+                            <span>◷</span>
+                            <h3>Review Progress</h3>
+                            <p>Explore your spending history and monthly summaries.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide" id="slide2" hidden>
+                <div class="section-heading">
+                    <p class="eyebrow">AT A GLANCE</p>
+                    <h2>Your Dashboard</h2>
+                    <p>Understand your spending with a quick overview.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <span>Total Spending</span>
+                        <h3>₹<span id="total">0.00</span></h3>
+                        <p>Across all recorded expenses</p>
+                    </article>
+                    <article class="stat-card">
+                        <span>This Month</span>
+                        <h3>₹<span id="monthlyTotal">0.00</span></h3>
+                        <label for="monthFilter">Choose month</label>
+                        <input type="month" id="monthFilter">
+                    </article>
+                </div>
+
+                <div class="card">
+                    <h3>Spending by Category</h3>
+                    <div id="categorySummary">
+                        <p>Your category summary will appear here.</p>
+                    </div>
+                </div>
+
+                <button type="button" class="primary-button" data-go-to="3">
+                    + Add an Expense
+                </button>
+            </section>
+
+            <section class="slide" id="slide3" hidden>
+                <div class="section-heading">
+                    <p class="eyebrow">RECORD YOUR SPENDING</p>
+                    <h2>Add a New Expense</h2>
+                    <p>Enter the details below to record your spending.</p>
+                </div>
+
+                <form id="expenseForm" class="card expense-form">
+                    <input type="hidden" id="expenseId">
+
+                    <div class="form-group">
+                        <label for="title">Expense Name</label>
+                        <input type="text" id="title" placeholder="e.g. Lunch" required maxlength="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount (₹)</label>
+                        <input type="number" id="amount" placeholder="e.g. 100" min="0.01" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" required>
+                            <option value="">Choose a category</option>
+                            <option value="Food">Food</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Education">Education</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Expense Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+
+                    <p id="message" role="status" aria-live="polite"></p>
+
+                    <div class="form-actions">
+                        <button type="submit" id="submitButton" class="primary-button">
+                            Add Expense
+                        </button>
+                        <button type="button" id="cancelEdit" class="secondary-button" hidden>
+                            Cancel Edit
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="slide" id="slide4" hidden>
+                <div class="section-heading">
+                    <p class="eyebrow">YOUR RECORDS</p>
+                    <h2>Expense History</h2>
+                    <p>Search and filter your saved expenses.</p>
+                </div>
+
+                <div class="card">
+                    <div class="filter-grid">
+                        <div class="form-group">
+                            <label for="searchExpense">Search</label>
+                            <input type="search" id="searchExpense" placeholder="Search expense name...">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="filterCategory">Category</label>
+                            <select id="filterCategory">
+                                <option value="">All categories</option>
+                                <option value="Food">Food</option>
+                                <option value="Travel">Travel</option>
+                                <option value="Education">Education</option>
+                                <option value="Shopping">Shopping</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="filterDate">Date</label>
+                            <input type="date" id="filterDate">
+                        </div>
+
+                        <button type="button" id="clearFilters" class="secondary-button">
+                            Clear Filters
+                        </button>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Expense</th>
+                                    <th>Amount</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expenseList"></tbody>
+                        </table>
+                    </div>
+
+                    <p id="emptyMessage">No matching expenses found.</p>
+                </div>
+            </section>
+
+            <section class="slide" id="slide5" hidden>
+                <div class="section-heading">
+                    <p class="eyebrow">YOUR SPENDING PATTERNS</p>
+                    <h2>Spending Reports</h2>
+                    <p>Review how your expenses are divided by category.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Category Summary</h3>
+                    <div id="categorySummaryReport">
+                        <p>Your spending report will appear here.</p>
+                    </div>
+                </div>
+
+                <button type="button" class="primary-button" data-go-to="2">
+                    Back to Dashboard
+                </button>
+            </section>
+
+            <footer class="slide-controls">
+                <button type="button" id="previousSlide" class="secondary-button" disabled>
+                    ← Previous
+                </button>
+                <div class="progress-area">
+                    <span id="slideCounter">Slide 1 of 5</span>
+                    <div class="progress-track">
+                        <div id="progressBar" class="progress-bar"></div>
+                    </div>
+                </div>
+                <button type="button" id="nextSlide" class="primary-button">
+                    Next →
+                </button>
+            </footer>
+        </main>
+    </div>
 </body>
 </html>
